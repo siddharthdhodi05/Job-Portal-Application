@@ -27,6 +27,3 @@ app.listen(PORT,()=>{
   
 })
 
-//JG7Q6CObI0NIJkh9
-
-//mongodb+srv://siddharthdhodiwork:JG7Q6CObI0NIJkh9@cluster0.cpzcj.mongodb.net/
