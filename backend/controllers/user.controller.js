@@ -40,14 +40,14 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, password, role } = req.body;
-    if (!email || !password || role) {
+    if (!email || !password || !role) {
       return res.status(400).json({
         message: "something is missing",
         success: false,
       });
     }
 
-    let user = User.findOne({ email });
+    let user = await User.findOne({email});
     if (!user) {
       return res.status(400).json({
         message: "Incorrect email or password",
@@ -71,7 +71,7 @@ export const login = async (req, res) => {
     const tokenData = {
       userId: user._id,
     };
-    const token = await jwt.sign(tokenData, process.env.SECRET_KEY, {
+    const token =jwt.sign(tokenData, process.env.SECRET_KEY, {
       expiresIn: "1d",
     });
 
